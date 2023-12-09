@@ -1,0 +1,24 @@
+{
+  "name": "negartarh/persiansms",
+  "description": "Persian SMS PHP SDK",
+  "type": "library",
+  "autoload": {
+    "files": [
+      "src/Helpers/functions.php"
+    ],
+    "psr-4": {
+      "Negartarh\\Persiansms\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "negartarh",
+      "email": "2020amiramir@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.4",
+    "ext-curl": "*"
+  }
+}
