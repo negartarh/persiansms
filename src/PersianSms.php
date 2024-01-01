@@ -46,13 +46,13 @@ class PersianSms extends SmsAbstract {
 	}
 
 
-	public function send( ?string $text = '', array $numbers = [], array $config = [] ): array {
+	public function send( ?string $text = '', array $numbers = [], array $config = [], bool $unique = true ): array {
 
 		$result = [];
 
 		$text = $this->prepareMessage( $text );
 
-		$numbers = $this->revivalMobileNumbers( $numbers );
+		$numbers = $this->revivalMobileNumbers( $numbers, $unique );
 
 		$config = array_merge( $this->config, $config );
 

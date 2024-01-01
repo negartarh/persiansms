@@ -30,7 +30,7 @@ abstract class SmsAbstract implements SmsInterface {
 
 	}
 
-	public function revivalMobileNumbers( ?array $numbers = [] ): array {
+	public function revivalMobileNumbers( ?array $numbers = [], bool $unique = true ): array {
 
 		$numbers = is_array( $numbers ) ? $numbers : [ strval( $numbers ) ];
 
@@ -53,6 +53,10 @@ abstract class SmsAbstract implements SmsInterface {
 		$numbers = array_filter( $numbers, fn( $number ) => substr( $number, 0, 1 ) == '9' );
 
 		$numbers = array_map( fn( $number ) => self::prependIranCallingCode( $number ), $numbers );
+
+		if ( $unique ):
+			$numbers = array_unique( $numbers );
+		endif;
 
 		return $numbers;
 	}
