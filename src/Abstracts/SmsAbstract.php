@@ -15,14 +15,12 @@ abstract class SmsAbstract implements SmsInterface {
 	public function validateMobileNumber( ?string $number = '' ): bool {
 
         return self::validateMobileNumbers( [ $number ] )[0];
-        
+
 	}
 
 	public function validateMobileNumbers( ?array $numbers = [] ): array {
 
 		return array_map( function ( $number ) {
-
-			$number = trim( strval( $number ) );
 
 			return count( self::revivalMobileNumbers( [ $number ] ) ) === 1;
 
@@ -34,7 +32,7 @@ abstract class SmsAbstract implements SmsInterface {
 
 		$numbers = is_array( $numbers ) ? $numbers : [ strval( $numbers ) ];
 
-		$numbers = array_map( fn( $number ) => strval( $number ), $numbers );
+        $numbers = array_map(fn($number) => trim(strval($number)), $numbers);
 
 		$numbers = array_map( fn( $number ) => self::removeWhiteSpaces( $number ), $numbers );
 
