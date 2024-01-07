@@ -14,8 +14,8 @@ abstract class SmsAbstract implements SmsInterface {
 
 	public function validateMobileNumber( ?string $number = '' ): bool {
 
-		return count( self::validateMobileNumbers( [ $number ] ) ) === 1;
-
+        return self::validateMobileNumbers( [ $number ] )[0];
+        
 	}
 
 	public function validateMobileNumbers( ?array $numbers = [] ): array {
